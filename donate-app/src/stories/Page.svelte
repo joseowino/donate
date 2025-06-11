@@ -2,16 +2,17 @@
   import './page.css';
   import Header from './Header.svelte';
 
-  let user = $state(null);
+  /** @type {{ name: string } | null | undefined} */
+  let user = undefined;
 </script>
 
 <article>
-  <Header
+  <!-- <Header
     {user}
     onLogin={() => (user = { name: 'Jane Doe' })}
-    onLogout={() => (user = null)}
+    onLogout={() => (user = undefined)}
     onCreateAccount={() => (user = { name: 'Jane Doe' })}
-  />
+  /> -->
 
   <section class="storybook-page">
     <h2>Pages in Storybook</h2>
