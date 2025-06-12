@@ -102,77 +102,107 @@
 	}
 </script>
 
-
-<div class="space-y-4">
-	<h3 class="text-lg font-semibold">Make a Donation</h3>
+<div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+	<div class="flex items-center space-x-3 mb-6">
+		<div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+			<span class="text-white text-lg">💚</span>
+		</div>
+		<h3 class="text-2xl font-bold text-gray-900">Make a Donation</h3>
+	</div>
 
 	<!-- Predefined Amounts -->
-	<div class="grid grid-cols-2 gap-2">
-		{#each predefinedAmounts as presetAmount}
-			<button
-				onclick={() => setAmount(presetAmount)}
-				class="rounded-lg border p-2 transition-colors hover:bg-gray-50 {amount ===
-				presetAmount.toString()
-					? 'border-blue-500 bg-blue-50'
-					: 'border-gray-300'}"
-			>
-				KES {presetAmount.toLocaleString()}
-			</button>
-		{/each}
+	<div class="mb-6">
+		<label class="block text-sm font-semibold text-gray-700 mb-3">Quick Amount</label>
+		<div class="grid grid-cols-2 gap-3">
+			{#each predefinedAmounts as presetAmount}
+				<button
+					onclick={() => setAmount(presetAmount)}
+					class="group relative rounded-xl border-2 p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg {amount === presetAmount.toString()
+						? 'border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 shadow-md'
+						: 'border-gray-200 hover:border-green-300 bg-white hover:bg-green-50'}"
+				>
+					<div class="text-center">
+						<div class="text-lg font-bold text-gray-900">KES {presetAmount.toLocaleString()}</div>
+						{#if amount === presetAmount.toString()}
+							<div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+								<span class="text-white text-xs">✓</span>
+							</div>
+						{/if}
+					</div>
+				</button>
+			{/each}
+		</div>
 	</div>
 
 	<!-- Custom Amount -->
-	<div>
-		<label for="amount" class="mb-1 block text-sm font-medium text-gray-700">
+	<div class="mb-6">
+		<label for="amount" class="block text-sm font-semibold text-gray-700 mb-2">
 			Custom Amount (KES)
 		</label>
-		<input
-			id="amount"
-			type="number"
-			bind:value={amount}
-			placeholder="Enter amount"
-			min="10"
-			class="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-		/>
+		<div class="relative">
+			<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+				<span class="text-gray-500 sm:text-sm">KES</span>
+			</div>
+			<input
+				id="amount"
+				type="number"
+				bind:value={amount}
+				placeholder="Enter amount"
+				min="10"
+				class="w-full pl-14 pr-4 py-4 text-lg rounded-xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 bg-gray-50 focus:bg-white"
+			/>
+		</div>
 	</div>
 
 	<!-- Phone Number -->
-	<div>
-		<label for="phone" class="mb-1 block text-sm font-medium text-gray-700">
-			Mpesa Phone Number *
+	<div class="mb-6">
+		<label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
+			<span class="flex items-center space-x-2">
+				<span>📱 Mpesa Phone Number</span>
+				<span class="text-red-500">*</span>
+			</span>
 		</label>
-		<input
-			id="phone"
-			type="tel"
-			bind:value={phoneNumber}
-			placeholder="254712345678"
-			class="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-		/>
-		<p class="mt-1 text-xs text-gray-500">Format: 254XXXXXXXXX</p>
+		<div class="relative">
+			<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+				<span class="text-gray-500 sm:text-sm">+</span>
+			</div>
+			<input
+				id="phone"
+				type="tel"
+				bind:value={phoneNumber}
+				placeholder="254712345678"
+				class="w-full pl-8 pr-4 py-4 text-lg rounded-xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 bg-gray-50 focus:bg-white"
+			/>
+		</div>
+		<p class="mt-2 text-sm text-gray-500 flex items-center space-x-1">
+			<span>ℹ️</span>
+			<span>Format: 254XXXXXXXXX</span>
+		</p>
 	</div>
 
 	<!-- Optional Message -->
-	<div>
-		<label for="message" class="mb-1 block text-sm font-medium text-gray-700">
-			Message (Optional)
+	<div class="mb-6">
+		<label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
+			💬 Message (Optional)
 		</label>
 		<textarea
 			id="message"
 			bind:value={message}
-			placeholder="Leave an encouraging message..."
-			rows="3"
-			class="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+			placeholder="Leave an encouraging message for the project..."
+			rows="4"
+			class="w-full p-4 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-300 bg-gray-50 focus:bg-white resize-none"
 		></textarea>
 	</div>
 
 	<!-- Status Messages -->
 	{#if donationStatus}
-		<div
-			class="rounded-lg p-3 {donationStatus.type === 'success'
-				? 'border border-green-200 bg-green-50 text-green-800'
-				: 'border border-red-200 bg-red-50 text-red-800'}"
-		>
-			{donationStatus.message}
+		<div class="mb-6 p-4 rounded-xl border-l-4 {donationStatus.type === 'success'
+			? 'border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 text-green-800'
+			: 'border-red-500 bg-gradient-to-r from-red-50 to-pink-50 text-red-800'} animate-in slide-in-from-top duration-300">
+			<div class="flex items-center space-x-2">
+				<span class="text-lg">{donationStatus.type === 'success' ? '✅' : '⚠️'}</span>
+				<span class="font-medium">{donationStatus.message}</span>
+			</div>
 		</div>
 	{/if}
 
@@ -180,32 +210,37 @@
 	<button
 		onclick={handleDonation}
 		disabled={isProcessing}
-		class="w-full rounded-lg bg-green-600 px-4 py-3 font-medium text-white transition-colors hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
+		class="w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4 font-bold text-white transition-all duration-300 hover:from-green-700 hover:to-emerald-700 hover:scale-105 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none"
 	>
 		{#if isProcessing}
-			<span class="flex items-center justify-center">
+			<span class="flex items-center justify-center space-x-3">
 				<svg
-					class="mr-3 -ml-1 h-5 w-5 animate-spin text-white"
+					class="w-6 h-6 animate-spin text-white"
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"
 				>
-					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
-					></circle>
+					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
 					<path
 						class="opacity-75"
 						fill="currentColor"
 						d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
 					></path>
 				</svg>
-				Processing...
+				<span>Processing Payment...</span>
 			</span>
 		{:else}
-			Donate KES {amount || '0'}
+			<span class="flex items-center justify-center space-x-2">
+				<span>🚀</span>
+				<span>Donate KES {amount || '0'}</span>
+			</span>
 		{/if}
 	</button>
 
-	<p class="text-center text-xs text-gray-500">
-		Your donation is anonymous and secure. You'll receive an SMS confirmation.
-	</p>
+	<div class="mt-6 text-center">
+		<p class="text-sm text-gray-500 flex items-center justify-center space-x-2">
+			<span>🔐</span>
+			<span>Your donation is secure and anonymous. You'll receive SMS confirmation.</span>
+		</p>
+	</div>
 </div>
