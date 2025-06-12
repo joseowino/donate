@@ -37,7 +37,9 @@ declare module '$env/static/private' {
 	export const HOME: string;
 	export const OLDPWD: string;
 	export const DESKTOP_SESSION: string;
+	export const NVM_BIN: string;
 	export const npm_package_json: string;
+	export const NVM_INC: string;
 	export const GNOME_SHELL_SESSION_MODE: string;
 	export const GTK_MODULES: string;
 	export const LC_MONETARY: string;
@@ -47,6 +49,7 @@ declare module '$env/static/private' {
 	export const DBUS_SESSION_BUS_ADDRESS: string;
 	export const COLORTERM: string;
 	export const COLOR: string;
+	export const NVM_DIR: string;
 	export const IM_CONFIG_PHASE: string;
 	export const WAYLAND_DISPLAY: string;
 	export const LOGNAME: string;
@@ -61,7 +64,6 @@ declare module '$env/static/private' {
 	export const npm_config_node_gyp: string;
 	export const PATH: string;
 	export const SESSION_MANAGER: string;
-	export const PAPERSIZE: string;
 	export const NODE: string;
 	export const npm_package_name: string;
 	export const XDG_MENU_PREFIX: string;
@@ -72,6 +74,7 @@ declare module '$env/static/private' {
 	export const DISPLAY: string;
 	export const LANG: string;
 	export const XDG_CURRENT_DESKTOP: string;
+	export const GOMODULE: string;
 	export const LC_TELEPHONE: string;
 	export const XMODIFIERS: string;
 	export const XDG_SESSION_DESKTOP: string;
@@ -96,6 +99,7 @@ declare module '$env/static/private' {
 	export const PWD: string;
 	export const npm_execpath: string;
 	export const XDG_CONFIG_DIRS: string;
+	export const NVM_CD_FLAGS: string;
 	export const XDG_DATA_DIRS: string;
 	export const npm_config_global_prefix: string;
 	export const LC_NUMERIC: string;
@@ -147,7 +151,9 @@ declare module '$env/dynamic/private' {
 		HOME: string;
 		OLDPWD: string;
 		DESKTOP_SESSION: string;
+		NVM_BIN: string;
 		npm_package_json: string;
+		NVM_INC: string;
 		GNOME_SHELL_SESSION_MODE: string;
 		GTK_MODULES: string;
 		LC_MONETARY: string;
@@ -157,6 +163,7 @@ declare module '$env/dynamic/private' {
 		DBUS_SESSION_BUS_ADDRESS: string;
 		COLORTERM: string;
 		COLOR: string;
+		NVM_DIR: string;
 		IM_CONFIG_PHASE: string;
 		WAYLAND_DISPLAY: string;
 		LOGNAME: string;
@@ -171,7 +178,6 @@ declare module '$env/dynamic/private' {
 		npm_config_node_gyp: string;
 		PATH: string;
 		SESSION_MANAGER: string;
-		PAPERSIZE: string;
 		NODE: string;
 		npm_package_name: string;
 		XDG_MENU_PREFIX: string;
@@ -182,6 +188,7 @@ declare module '$env/dynamic/private' {
 		DISPLAY: string;
 		LANG: string;
 		XDG_CURRENT_DESKTOP: string;
+		GOMODULE: string;
 		LC_TELEPHONE: string;
 		XMODIFIERS: string;
 		XDG_SESSION_DESKTOP: string;
@@ -206,6 +213,7 @@ declare module '$env/dynamic/private' {
 		PWD: string;
 		npm_execpath: string;
 		XDG_CONFIG_DIRS: string;
+		NVM_CD_FLAGS: string;
 		XDG_DATA_DIRS: string;
 		npm_config_global_prefix: string;
 		LC_NUMERIC: string;
