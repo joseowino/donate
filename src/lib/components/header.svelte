@@ -10,7 +10,7 @@
 					<span class="text-white font-bold text-lg">❤️</span>
 				</div>
 				<a href="/" class="text-2xl font-bold text-white hover:text-blue-100 transition-colors">
-					DonateKenya
+					Donate
 				</a>
 			</div>
 			
